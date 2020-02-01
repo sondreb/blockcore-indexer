@@ -25,6 +25,7 @@ services:
     container_name: city-chain
     image: citychain/citychain
     command: ["-server=1", "-txindex=1", "-rpcallowip=172.16.10.10", "-rpcbind=city-chain", "-apiuri=http://0.0.0.0:4335", "-rpcuser=rpcuser", "-rpcpassword=rpcpassword"]
+    stop_grace_period: 5m
     networks:
       - indexer
     volumes:
@@ -33,6 +34,7 @@ services:
   mongo:
     container_name: city-mongo
     image: mongo:3.4
+    stop_grace_period: 2m
     networks:
       - indexer
     volumes:
